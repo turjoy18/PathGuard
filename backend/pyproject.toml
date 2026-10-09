@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools==75.6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pathguard-api"
+version = "0.1.0"
+description = "PathGuard backend API scaffold"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "alembic==1.14.0",
+  "fastapi==0.115.6",
+  "psycopg[binary]==3.2.3",
+  "pydantic==2.10.4",
+  "SQLAlchemy==2.0.36",
+  "uvicorn[standard]==0.34.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "httpx==0.28.1",
+  "pytest==8.3.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
