@@ -31,6 +31,17 @@ The health endpoint is `GET http://localhost:8000/api/v1/health`. It returns HTT
 
 Official-source registry, health, and normalized publications are a separate contract under `/api/v1/source-contracts` once `register_source_contracts` is passed to `create_app`. See `app/source_contracts/README.md`. Revision `0002_official_source_contracts` adds that persistence boundary after the empty baseline.
 
+The human-shelter catalogue is a separate read API under `/api/v1/shelters/human`. Register it explicitly so bootstrap stays an integration boundary:
+
+```python
+from app.human_shelters.api import register_human_shelters
+from app.human_shelters.service import build_prototype_service
+
+create_app(register_features=lambda registry: register_human_shelters(registry, build_prototype_service()))
+```
+
+`build_postgres_service(database_url)` persists the same validated fixture after revision `0003_human_shelter_catalogue`. Provenance uses `ProvenanceEnvelope` from the official-source contracts. The catalogue does not add a source-registry key and does not read typhoon-shelter references. See `docs/data-sources/human-shelters.md`.
+
 ## Feature registration
 
 Register a feature router through the application factory rather than editing feature code into `app.main`:

@@ -12,6 +12,7 @@ dependencies = [
   "fastapi==0.115.6",
   "psycopg[binary]==3.2.3",
   "pydantic==2.10.4",
+  "pyproj==3.7.1",
   "SQLAlchemy==2.0.36",
   "uvicorn[standard]==0.34.0",
 ]
@@ -25,6 +26,13 @@ test = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["app*"]
+
+[tool.setuptools.package-data]
+app = [
+  "human_shelters/fixtures/*.json",
+  "human_shelters/fixtures/negative/*.json",
+  "source_contracts/fixtures/*.json",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

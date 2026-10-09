@@ -1,0 +1,53 @@
+{
+  "schema_version": "human-shelter-catalogue.v1",
+  "fixture_name": "central-hong-kong-human-shelters",
+  "fixture_version": "negative-live",
+  "label": "PathGuard verified prototype/demo catalogue",
+  "pilot_area": "Central Hong Kong",
+  "owner": "PathGuard",
+  "source_url": "backend/app/human_shelters/fixtures/negative/live-mode.json",
+  "attribution": "Negative fixture. Not official shelter data.",
+  "coverage": "Documented Central Hong Kong pilot area only. This is not official citywide Hong Kong coverage.",
+  "limitations": "Negative import fixture that claims live mode.",
+  "verification_method": "Not a live source.",
+  "data_classification": "mock_demo",
+  "official_citywide": false,
+  "data_mode": "live",
+  "publication_date": "2026-10-09",
+  "records": [
+    {
+      "stable_id": "pg-proto-live",
+      "record_type": "human_shelter",
+      "name": "Live mode prototype",
+      "address": "Central, Hong Kong",
+      "authority": "PathGuard prototype catalogue",
+      "pilot_area": "Central Hong Kong",
+      "geometry": {
+        "geometry_type": "Point",
+        "coordinates": [114.157, 22.281],
+        "crs": "EPSG:4326",
+        "dimensions": 2
+      },
+      "operating_status": "open",
+      "last_verified_at": "2026-10-01T00:00:00Z",
+      "provenance": {
+        "contract_version": "official-source-contracts.v1",
+        "mode": "live",
+        "source_name": "PathGuard verified prototype/demo catalogue",
+        "source_record_id": "pg-proto-live",
+        "fetched_at": "2026-10-01T00:00:00Z",
+        "issued_at": null,
+        "valid_until": null,
+        "source_version": "negative",
+        "freshness_state": "unknown",
+        "source_provided_freshness": null,
+        "mode_metadata": {
+          "mode": "live",
+          "fetched_at": "2026-10-01T00:00:00Z",
+          "provider_request_id": null,
+          "provider_response_id": null
+        }
+      }
+    }
+  ]
+}
