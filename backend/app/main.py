@@ -12,6 +12,7 @@ from app.api.health import router as health_router
 from app.adapters.csdi import router as csdi_router
 from app.adapters.hko import router as hko_router
 from app.adapters.marine import router as marine_router
+from app.hazards.api import router as hazard_router
 from app.core.config import Settings
 from app.db.health import DatabaseProbe, PostgresDatabaseProbe
 from app.errors import internal_error_response, validation_error_response
@@ -75,6 +76,7 @@ def create_app(
     api_router.include_router(csdi_router())
     api_router.include_router(hko_router())
     api_router.include_router(marine_router())
+    api_router.include_router(hazard_router())
     application.include_router(api_router)
 
     registry = FeatureRegistry()
