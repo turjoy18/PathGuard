@@ -68,9 +68,9 @@ export function UpdatePrompt() {
     }
     return () => window.removeEventListener("beforeinstallprompt", onPrompt)
   }, [])
+  if (!install && !waiting) return null
   return (
     <div className="row">
-      <p>Install PathGuard from the browser menu when the device offers it. An update waits until you choose it.</p>
       {install ? <Button onClick={() => install.prompt()}>Install</Button> : null}
       {waiting ? <Button onClick={() => waiting.postMessage({ type: "skip-waiting" })}>Update</Button> : null}
     </div>

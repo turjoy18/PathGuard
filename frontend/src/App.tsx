@@ -35,7 +35,7 @@ export default function App() {
           <Route path="reroute" element={<Reroute />} />
           <Route path="profile" element={<Profile />} />
           <Route path="report" element={<ReportHazard />} />
-          <Route path="typhoon-reference" element={<TyphoonReference fixture={fixture} />} />
+          <Route path="typhoon-reference" element={<TyphoonReference />} />
         </Route>
       </Routes>
     </BrowserRouter>
