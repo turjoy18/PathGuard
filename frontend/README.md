@@ -10,3 +10,5 @@ npm test
 ```
 
 Fixture mode is selected in the header. It reads committed fixtures in `src/api.ts` and does not call CSDI, HKO, or Marine Department.
+
+The last saved result lives in IndexedDB on the device until the guest deletes it from Profile. The in-memory profile is not written to the server. A cached result is read-only and keeps the mode it was saved with.
