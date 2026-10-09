@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom"
 import { FIXTURE_MODES, type FixtureMode } from "./api"
 import type { CopyKey } from "./i18n"
 import { useGuest } from "./journey"
+import { OfflineNotice, UpdatePrompt } from "./pwa"
 
 const LINKS: [string, CopyKey][] = [
   ["/", "navLanding"],
@@ -40,6 +41,8 @@ export function Shell({ mode, onMode }: { mode: FixtureMode; onMode: (mode: Fixt
           </NavLink>
         ))}
       </nav>
+      <OfflineNotice />
+      <UpdatePrompt />
       <main id="main">
         <Outlet />
       </main>

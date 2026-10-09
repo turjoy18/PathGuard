@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import type { FixtureEnvelope } from "./api"
 import { GuestForm, useGuest } from "./journey"
+import { DeleteSaved, SaveResult } from "./pwa"
 import { Banner, Button, Card, Confirm, Empty, ErrorState, Loading, StatusChip } from "./ui"
 
 export function Landing() {
@@ -74,6 +75,7 @@ export function RoutePage({ fixture }: { fixture: FixtureEnvelope }) {
       <h1>Route</h1>
       {fixture.route === null ? <Empty title="No route geometry" detail="A missing route stays missing. This screen does not draw a straight line." /> : null}
       <Loading label="Map is not loaded." />
+      <SaveResult fixture={fixture} />
     </>
   )
 }
@@ -105,7 +107,12 @@ export function Reroute() {
 }
 
 export function Profile() {
-  return <GuestForm titleKey="profileTitle" />
+  return (
+    <>
+      <GuestForm titleKey="profileTitle" />
+      <DeleteSaved />
+    </>
+  )
 }
 
 export function ReportHazard() {
