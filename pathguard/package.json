@@ -1,0 +1,13 @@
+{
+  "name": "pathguard-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PathGuard - accessible emergency navigation for Hong Kong (demo build, zero dependencies)",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/api.test.js"
+  }
+}

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b2c">
+  <meta name="description" content="PathGuard marine context: typhoon shelters for boats, HKO observations, and advisory reports.">
+  <title>Map context · PathGuard</title>
+  <link rel="stylesheet" href="./map-context.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to map context</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="./index.html#dashboard" aria-label="PathGuard home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span><strong>PathGuard</strong><small>clear next steps</small></span>
+      </a>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="./index.html#dashboard">Dashboard</a>
+        <a class="active" href="./map-context.html" aria-current="page">Map context</a>
+        <a href="./alerts.html">Alerts</a>
+        <a href="./index.html#settings">Profile</a>
+        <a href="#advisories">Advisories</a>
+        <a href="#about-data">Data sources</a>
+      </nav>
+      <button class="icon-button menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <main id="main-content" class="shell">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Situational awareness</p>
+        <h1 id="page-title">Marine context</h1>
+        <p class="lede">A calm view of harbour conditions, official observations, and app-reported advisories.</p>
+      </div>
+      <div class="heading-actions">
+        <span class="freshness-chip"><span class="status-dot" aria-hidden="true"></span>Data checked <time datetime="2025-06-24T14:20:00+08:00">14:20 HKT</time></span>
+        <button class="button button-secondary" id="read-page" type="button"><span aria-hidden="true">◉</span> Read this page</button>
+      </div>
+    </section>
+
+    <section class="notice notice-info" aria-labelledby="marine-scope-title">
+      <span class="notice-icon" aria-hidden="true">⚓</span>
+      <div>
+        <h2 id="marine-scope-title">For boats, not people</h2>
+        <p>Typhoon shelters shown here are <strong>Shelters for boats (Marine Department)</strong>. They are marine context only and are never destinations for people.</p>
+      </div>
+      <a class="text-link" href="#capabilities">What this view cannot do <span aria-hidden="true">→</span></a>
+    </section>
+
+    <div class="workspace-grid">
+      <section class="map-column" aria-labelledby="map-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Live context</p>
+            <h2 id="map-title">Harbour conditions</h2>
+          </div>
+          <div class="view-toggle" role="group" aria-label="Map presentation mode">
+            <button class="toggle-button is-selected" type="button" data-view="map" aria-pressed="true">Map</button>
+            <button class="toggle-button" type="button" data-view="list" aria-pressed="false">List</button>
+          </div>
+        </div>
+
+        <div class="map-frame" id="map-panel" tabindex="0" aria-label="Schematic marine context map. Four Marine Department boat shelter markers, three HKO observation markers, and two app advisory areas are shown. Use the list view for a text alternative.">
+          <div class="map-toolbar" aria-label="Map layers">
+            <span class="map-label"><span class="map-label-icon" aria-hidden="true">⌖</span> Fixture geometry · presentation only</span>
+            <button class="layer-button is-on" type="button" data-layer="shelters" aria-pressed="true"><span class="legend-marker shelter-marker" aria-hidden="true"></span>Boat shelters</button>
+            <button class="layer-button is-on" type="button" data-layer="observations" aria-pressed="true"><span class="legend-marker station-marker" aria-hidden="true"></span>HKO observations</button>
+            <button class="layer-button is-on" type="button" data-layer="advisories" aria-pressed="true"><span class="legend-marker advisory-marker" aria-hidden="true"></span>Advisories</button>
+          </div>
+          <svg class="marine-map" viewBox="0 0 900 530" role="img" aria-labelledby="map-svg-title map-svg-desc" preserveAspectRatio="xMidYMid slice">
+            <title id="map-svg-title">Marine context schematic</title>
+            <desc id="map-svg-desc">A dark blue schematic of a harbour with four boat shelter markers, observation stations, and app-generated advisory areas.</desc>
+            <defs>
+              <linearGradient id="water-gradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#092b43"/>
+                <stop offset="1" stop-color="#0b415d"/>
+              </linearGradient>
+              <pattern id="water-lines" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
+                <path d="M0 15H80 M0 43H80" fill="none" stroke="#5db3bd" stroke-opacity=".1" stroke-width="2"/>
+              </pattern>
+              <filter id="marker-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#00131e" flood-opacity=".5"/>
+              </filter>
+            </defs>
+            <rect width="900" height="530" fill="url(#water-gradient)"/>
+            <rect width="900" height="530" fill="url(#water-lines)"/>
+            <g class="shoreline" aria-hidden="true">
+              <path d="M0 0H202C220 37 208 70 240 101C273 134 303 138 293 177C282 219 229 234 243 278C253 311 321 319 314 367C308 408 251 423 254 469C256 493 271 511 286 530H0Z"/>
+              <path d="M900 0H738C716 42 733 79 706 111C678 144 636 146 650 192C661 228 704 241 692 278C682 314 622 325 634 372C645 417 700 423 693 471C690 495 676 512 663 530H900Z"/>
+              <path d="M0 0H900" fill="none" stroke="#93b8ae" stroke-opacity=".48" stroke-width="4"/>
+              <path d="M0 530H900" fill="none" stroke="#93b8ae" stroke-opacity=".35" stroke-width="4"/>
+              <g class="shore-detail" opacity=".44"><path d="M30 56l62-24 57 28 34-18 30 30M25 427l90-19 42 32 67-20M850 70l-70 34-35-14-36 34M863 411l-78-22-48 34-53-10"/></g>
+            </g>
+            <g class="map-labels" aria-hidden="true"><text x="72" y="195">WEST WATERFRONT</text><text x="690" y="192">EAST WATERFRONT</text><text x="395" y="286">VICTORIA HARBOUR</text><text x="371" y="454">OPEN WATER</text></g>
+            <g class="route-lines" aria-hidden="true"><path d="M135 80C260 169 278 311 437 352S676 407 766 466"/><path d="M115 445C246 386 317 196 478 144S671 115 786 81"/></g>
+            <g class="advisory-layer" data-layer-group="advisories">
+              <ellipse class="advisory-area advisory-area-amber" cx="282" cy="204" rx="108" ry="67" transform="rotate(-23 282 204)"/>
+              <ellipse class="advisory-area advisory-area-teal" cx="635" cy="360" rx="116" ry="70" transform="rotate(18 635 360)"/>
+            </g>
+            <g class="marker-layer" data-layer-group="observations">
+              <g class="map-marker station-marker" tabindex="0" role="button" aria-label="HKO station, North Point. Wind east-northeast 28 kilometres per hour, rainfall 4 millimetres in the past hour." data-id="station-north-point" transform="translate(454 145)"><circle class="marker-halo" r="22"/><circle r="13"/><path d="M0-6v12M-6 0h12"/><title>HKO · North Point</title></g>
+              <g class="map-marker station-marker" tabindex="0" role="button" aria-label="HKO station, Cheung Chau. Wind east 19 kilometres per hour, rainfall 1 millimetre in the past hour." data-id="station-cheung-chau" transform="translate(555 385)"><circle class="marker-halo" r="22"/><circle r="13"/><path d="M0-6v12M-6 0h12"/><title>HKO · Cheung Chau</title></g>
+              <g class="map-marker station-marker" tabindex="0" role="button" aria-label="HKO station, King's Park. Wind east-northeast 22 kilometres per hour, rainfall 2 millimetres in the past hour." data-id="station-kings-park" transform="translate(341 97)"><circle class="marker-halo" r="22"/><circle r="13"/><path d="M0-6v12M-6 0h12"/><title>HKO · King's Park</title></g>
+            </g>
+            <g class="marker-layer" data-layer-group="shelters">
+              <g class="map-marker shelter-marker selected" tabindex="0" role="button" aria-label="Aberdeen Typhoon Shelter. Shelter for boats, Marine Department. Selected." data-id="shelter-aberdeen" transform="translate(180 324)"><circle class="marker-halo" r="25"/><path class="marker-shape" d="M0-17 15 0 0 17-15 0Z"/><path class="marker-anchor" d="M0 6v10M-5 12h10"/><title>Aberdeen Typhoon Shelter · Marine Department</title></g>
+              <g class="map-marker shelter-marker" tabindex="0" role="button" aria-label="Causeway Bay Typhoon Shelter. Shelter for boats, Marine Department." data-id="shelter-causeway-bay" transform="translate(703 246)"><circle class="marker-halo" r="25"/><path class="marker-shape" d="M0-17 15 0 0 17-15 0Z"/><path class="marker-anchor" d="M0 6v10M-5 12h10"/><title>Causeway Bay Typhoon Shelter · Marine Department</title></g>
+              <g class="map-marker shelter-marker" tabindex="0" role="button" aria-label="Kwun Tong Typhoon Shelter. Shelter for boats, Marine Department." data-id="shelter-kwun-tong" transform="translate(760 397)"><circle class="marker-halo" r="25"/><path class="marker-shape" d="M0-17 15 0 0 17-15 0Z"/><path class="marker-anchor" d="M0 6v10M-5 12h10"/><title>Kwun Tong Typhoon Shelter · Marine Department</title></g>
+              <g class="map-marker shelter-marker" tabindex="0" role="button" aria-label="Yau Ma Tei Typhoon Shelter. Shelter for boats, Marine Department." data-id="shelter-yau-ma-tei" transform="translate(256 132)"><circle class="marker-halo" r="25"/><path class="marker-shape" d="M0-17 15 0 0 17-15 0Z"/><path class="marker-anchor" d="M0 6v10M-5 12h10"/><title>Yau Ma Tei Typhoon Shelter · Marine Department</title></g>
+            </g>
+            <g class="map-callouts" aria-hidden="true"><text x="196" y="358">ABERDEEN</text><text x="718" y="278">CAUSEWAY BAY</text><text x="775" y="430">KWUN TONG</text></g>
+          </svg>
+          <div class="map-scale" aria-hidden="true"><span></span><small>Schematic · not to scale</small></div>
+          <div class="map-north" aria-hidden="true"><span>↑</span><small>N</small></div>
+        </div>
+
+        <div class="map-caption"><span><strong>3</strong> HKO observations</span><span><strong>4</strong> boat shelter markers</span><span><strong>2</strong> app advisory areas</span><span class="caption-source">No pedestrian network or human shelter data</span></div>
+
+        <div class="map-list" id="map-list" hidden>
+          <div class="list-intro"><strong>Text alternative</strong><span>All markers on the schematic are listed below. Select one to view details.</span></div>
+          <div class="list-section"><h3>Marine Department · shelters for boats</h3><div id="shelter-list"></div></div>
+          <div class="list-section"><h3>HKO · station observations</h3><div id="station-list"></div></div>
+          <div class="list-section"><h3>PathGuard · advisory reports</h3><div id="advisory-list"></div></div>
+        </div>
+      </section>
+
+      <aside class="context-column" aria-label="Selected context and observations">
+        <section class="panel selected-panel" aria-labelledby="selected-title" aria-live="polite">
+          <div class="panel-kicker"><span class="selection-pulse" aria-hidden="true"></span>Selected on map</div>
+          <div id="selected-content">
+            <div class="selected-heading"><span class="large-marker shelter-marker" aria-hidden="true">◆</span><div><p class="source-label">Marine Department</p><h2 id="selected-title">Aberdeen Typhoon Shelter</h2></div></div>
+            <p class="plain-tag">Shelter for boats (Marine Department)</p>
+            <p class="muted-copy">A designated marine shelter area for vessels. This marker is not a place for people to evacuate to.</p>
+            <dl class="detail-list"><div><dt>Layer</dt><dd>Marine context</dd></div><div><dt>Source version</dt><dd>2025-06-24</dd></div><div><dt>Imported</dt><dd>24 Jun 2025, 14:20 HKT</dd></div><div><dt>Record status</dt><dd><span class="inline-status"><span class="status-dot"></span>Current</span></dd></div></dl>
+            <div class="selected-actions"><button class="button button-primary" type="button" id="focus-shelter">Focus on map</button><button class="button button-quiet" type="button" id="shelter-narrate">Read details</button></div>
+          </div>
+        </section>
+
+        <section class="panel observations-panel" aria-labelledby="observations-title">
+          <div class="panel-heading"><div><p class="source-label">Official observations</p><h2 id="observations-title">Nearby HKO stations</h2></div><span class="freshness-mini">10 min feed</span></div>
+          <p class="panel-intro">Provisional observations from the Hong Kong Observatory. They describe conditions, not a route or evacuation order.</p>
+          <div id="observation-cards" class="observation-cards"></div>
+          <p class="source-footer">Source: Hong Kong Observatory · regional weather observations · last checked 14:20 HKT</p>
+        </section>
+
+        <section class="panel advisory-panel" id="advisories" aria-labelledby="advisories-title">
+          <div class="panel-heading"><div><p class="source-label">App-generated reports</p><h2 id="advisories-title">Hazards nearby</h2></div><span class="advisory-count">2 active</span></div>
+          <p class="panel-intro">These are PathGuard advisory reports. They do not modify official warnings or create a pedestrian route.</p>
+          <div id="advisory-cards" class="advisory-cards"></div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="capability-grid" id="capabilities" aria-labelledby="capabilities-title">
+      <div class="capability-intro"><p class="eyebrow">Honest limits</p><h2 id="capabilities-title">What PathGuard can and cannot show here</h2><p>This view keeps marine context separate from people-focused emergency support. We will not imply a capability that the approved data cannot provide.</p></div>
+      <div class="capability-card capability-available"><span class="capability-icon" aria-hidden="true">✓</span><div><h3>Available now</h3><p>HKO weather observations, Marine Department boat shelter context, and clearly marked app-generated advisory reports.</p></div></div>
+      <div class="capability-card capability-deferred"><span class="capability-icon" aria-hidden="true">◌</span><div><h3>Human shelters · deferred</h3><p>No approved source currently provides locations, capacity, opening status, or accessibility features for shelters for people.</p></div></div>
+      <div class="capability-card capability-deferred"><span class="capability-icon" aria-hidden="true">◌</span><div><h3>Pedestrian routing · deferred</h3><p>No approved pedestrian network provides step-free paths, crossings, slopes, kerbs, lift status, or flood depth. There is no accessibility-aware route from this view.</p></div></div>
+    </section>
+
+    <section class="source-register panel" id="about-data" aria-labelledby="source-title">
+      <div class="source-register-heading"><div><p class="eyebrow">Traceable context</p><h2 id="source-title">Source and freshness register</h2></div><p>Every layer has a named source, version, and time. Fixture geometry is only a visual aid.</p></div>
+      <div class="source-table-wrap"><table><caption class="visually-hidden">PathGuard map context data sources and freshness</caption><thead><tr><th scope="col">Layer</th><th scope="col">Source</th><th scope="col">Version / update</th><th scope="col">Use in this view</th></tr></thead><tbody><tr><th scope="row">Boat shelters</th><td>Marine Department · data.gov.hk</td><td><strong>2025-06-24</strong><br><span class="table-muted">Checked 14:20 HKT</span></td><td>Marine context only</td></tr><tr><th scope="row">Station observations</th><td>Hong Kong Observatory (HKO)</td><td><strong>Provisional · 10 min</strong><br><span class="table-muted">Checked 14:20 HKT</span></td><td>Weather context</td></tr><tr><th scope="row">Advisory reports</th><td>PathGuard app-generated</td><td><strong>Live queue</strong><br><span class="table-muted">Reports expire and need review</span></td><td>Advisory overlay only</td></tr></tbody></table></div>
+      <p class="source-note"><strong>Presentation note:</strong> The schematic coastline and geometry are a visual fixture. They are not a basemap, do not represent navigable streets, and must not be used for navigation. Official warnings and instructions always take priority.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span>PathGuard · emergency context, explained plainly</span><span>Marine context only · Not a replacement for official instructions</span></div></footer>
+  <div class="sr-only" id="live-region" role="status" aria-live="polite"></div>
+  <script type="module" src="./map-context.js"></script>
+</body>
+</html>

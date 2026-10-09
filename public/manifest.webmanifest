@@ -1,0 +1,11 @@
+{
+  "name": "PathGuard",
+  "short_name": "PathGuard",
+  "description": "Accessible weather and emergency context for Hong Kong.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f3",
+  "theme_color": "#0b3b36",
+  "lang": "en",
+  "icons": []
+}

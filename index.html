@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10251f" />
+    <meta name="description" content="PathGuard emergency and weather readiness dashboard" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>PathGuard · Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to dashboard content</a>
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="brand" href="#dashboard" aria-label="PathGuard dashboard">
+            <span class="brand-mark" aria-hidden="true">P</span>
+            <span>
+              <strong>PathGuard</strong>
+              <small>Accessible emergency readiness</small>
+            </span>
+          </a>
+          <div class="header-tools">
+            <span class="environment-badge"><span class="status-dot" aria-hidden="true"></span>MVP preview</span>
+            <button class="icon-button" type="button" aria-label="Open notifications" data-action="notifications">
+              <span aria-hidden="true">♧</span>
+              <span class="notification-count">2</span>
+            </button>
+            <button class="profile-button" type="button" data-action="profile" aria-label="Open Alex Morgan profile">
+              <span class="avatar" aria-hidden="true">AM</span>
+              <span class="profile-name">Alex Morgan</span>
+              <span aria-hidden="true">⌄</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar" aria-label="Primary navigation">
+          <nav aria-label="Primary workspace navigation">
+            <p class="nav-label">Workspace</p>
+            <a class="nav-link is-active" href="#dashboard" data-view="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span>Dashboard</a>
+            <a class="nav-link" href="#weather" data-view="weather"><span class="nav-icon" aria-hidden="true">☁</span>Weather</a>
+            <a class="nav-link" href="#shelters" data-view="shelters"><span class="nav-icon" aria-hidden="true">🏠</span>Shelters</a>
+            <a class="nav-link" href="#replay" data-view="replay"><span class="nav-icon" aria-hidden="true">↻</span>Replay</a>
+            <a class="nav-link" href="#map" data-view="map"><span class="nav-icon" aria-hidden="true">⌖</span>Live map</a>
+            <a class="nav-link" href="#alerts" data-view="alerts"><span class="nav-icon" aria-hidden="true">!</span>Alerts <span class="nav-count">2</span></a>
+            <p class="nav-label nav-label-spaced">Operations</p>
+            <a class="nav-link" href="#operator" data-view="operator"><span class="nav-icon" aria-hidden="true">▦</span>Operator view</a>
+            <a class="nav-link" href="#caregiver" data-view="caregiver"><span class="nav-icon" aria-hidden="true">♡</span>Caregiver</a>
+            <a class="nav-link" href="#about" data-view="about"><span class="nav-icon" aria-hidden="true">i</span>About &amp; trust</a>
+          </nav>
+          <div class="sidebar-footer">
+            <div class="help-card">
+              <span class="help-icon" aria-hidden="true">?</span>
+              <div>
+                <strong>Need help?</strong>
+                <p>Keep this button available during an active alert.</p>
+              </div>
+            </div>
+            <a class="nav-link" href="#settings" data-view="settings"><span class="nav-icon" aria-hidden="true">⚙</span>Settings</a>
+          </div>
+        </aside>
+
+        <main id="main-content" class="main-content" tabindex="-1">
+          <div id="app"></div>
+        </main>
+      </div>
+      <p id="route-announcement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a class="mobile-nav-link is-active" href="#dashboard" data-view="dashboard"><span aria-hidden="true">⌂</span>Home</a>
+        <a class="mobile-nav-link" href="#weather" data-view="weather"><span aria-hidden="true">☁</span>Weather</a>
+        <a class="mobile-nav-link" href="#shelters" data-view="shelters"><span aria-hidden="true">🏠</span>Shelters</a>
+        <a class="mobile-nav-link" href="#map" data-view="map"><span aria-hidden="true">⌖</span>Map</a>
+        <a class="mobile-nav-link" href="#alerts" data-view="alerts"><span aria-hidden="true">!</span>Alerts</a>
+        <a class="mobile-nav-link" href="#caregiver" data-view="caregiver"><span aria-hidden="true">♡</span>Me</a>
+        <a class="mobile-nav-link" href="#about" data-view="about"><span aria-hidden="true">i</span>About</a>
+      </nav>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

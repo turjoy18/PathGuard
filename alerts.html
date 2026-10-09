@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>Alerts · PathGuard</title>
+    <link rel="stylesheet" href="./src/styles/pathguard.css" />
+    <link rel="stylesheet" href="./src/alerts/alerts.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to alerts</a>
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="./index.html#dashboard" aria-label="PathGuard home">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>PathGuard</span>
+        </a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a href="./index.html#dashboard" aria-label="Home">Home</a>
+          <a class="active" href="#alerts" aria-current="page">Alerts <span class="nav-count">2</span></a>
+          <a href="./index.html#map">Map</a>
+          <a href="./index.html#settings">Profile</a>
+        </nav>
+        <button class="profile-chip" type="button" aria-label="Open Mei's profile">
+          <span class="avatar" aria-hidden="true">M</span>
+          <span class="profile-chip-name">Mei</span>
+        </button>
+      </header>
+      <main id="main-content" tabindex="-1"></main>
+    </div>
+    <script type="module" src="./src/alerts/alerts-app.js"></script>
+  </body>
+</html>
