@@ -1,32 +1,37 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import type { FixtureEnvelope } from "./api"
+import { GuestForm, useGuest } from "./journey"
 import { Banner, Button, Card, Confirm, Empty, ErrorState, Loading, StatusChip } from "./ui"
 
 export function Landing() {
+  const { t } = useGuest()
   return (
     <>
-      <h1>PathGuard</h1>
-      <p>A pedestrian route to a human shelter, with the source and the gaps shown.</p>
-      <Link className="button" to="/start">Start</Link>
+      <h1>{t("landingTitle")}</h1>
+      <p>{t("landingBody")}</p>
+      <Link className="button" to="/start">{t("start")}</Link>
     </>
   )
 }
 
 export function QuickStart() {
+  const { t } = useGuest()
   return (
     <>
-      <h1>Quick Start</h1>
-      <p>Guest profile and permissions are added on the next task. This screen is reachable without an account.</p>
-      <Link className="button" to="/home">Continue</Link>
+      <GuestForm titleKey="quickTitle" />
+      <Link className="button" to="/home">{t("continue")}</Link>
     </>
   )
 }
 
 export function Home({ fixture }: { fixture: FixtureEnvelope }) {
+  const { profile, t } = useGuest()
+  const origin = profile.locationState === "manual" ? profile.manualOrigin : profile.locationState
   return (
     <>
-      <h1>Home</h1>
+      <h1>{t("navHome")}</h1>
+      <p>{t("originLabel")}: {origin === "unset" ? t("noOrigin") : `${origin} (${profile.locationState})`}</p>
       <Banner>{fixture.limitation}</Banner>
       <StatusChip>{fixture.mode}</StatusChip>
       <StatusChip>{fixture.freshnessState}</StatusChip>
@@ -100,7 +105,7 @@ export function Reroute() {
 }
 
 export function Profile() {
-  return <Empty title="Profile" detail="The guest profile form is not on this foundation screen." />
+  return <GuestForm titleKey="profileTitle" />
 }
 
 export function ReportHazard() {

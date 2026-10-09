@@ -14,12 +14,14 @@ import {
   Sources,
   TyphoonReference,
 } from "./pages"
+import { GuestProvider } from "./journey"
 import { Shell } from "./shell"
 
 export default function App() {
   const [mode, setMode] = useState<FixtureMode>("replay")
   const fixture = readFixture(mode)
   return (
+    <GuestProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<Shell mode={mode} onMode={setMode} />}>
@@ -37,5 +39,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </GuestProvider>
   )
 }
