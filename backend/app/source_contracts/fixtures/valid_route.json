@@ -1,0 +1,98 @@
+{
+  "contract_version": "official-source-contracts.v1",
+  "contract_status": "route_returned",
+  "origin": {
+    "geometry": {
+      "geometry_type": "Point",
+      "coordinates": [
+        114.15,
+        22.28
+      ],
+      "crs": "EPSG:4326",
+      "dimensions": 2
+    },
+    "label": null
+  },
+  "destination": {
+    "geometry": {
+      "geometry_type": "Point",
+      "coordinates": [
+        114.17,
+        22.3
+      ],
+      "crs": "EPSG:4326",
+      "dimensions": 2
+    },
+    "label": null
+  },
+  "geometry": {
+    "geometry_type": "LineString",
+    "coordinates": [
+      [
+        114.15,
+        22.28
+      ],
+      [
+        114.16,
+        22.29
+      ]
+    ],
+    "crs": "EPSG:4326",
+    "dimensions": 2
+  },
+  "steps": [
+    {
+      "order": 0,
+      "provider_step_id": "step-1",
+      "instruction": "Walk east",
+      "geometry": null,
+      "level": null,
+      "elevation_meters": null,
+      "indoor_outdoor": null,
+      "vertical_transition": null
+    }
+  ],
+  "distance_meters": 180.0,
+  "duration_seconds": 140.0,
+  "provider_identity": {
+    "provider_name": "CSDI",
+    "provider_code": "csdi",
+    "dataset_name": "3d-pedestrian"
+  },
+  "provider_request_id": "req-1",
+  "provider_response_id": "res-1",
+  "network_version": "network-9",
+  "vertical_information": [],
+  "accessibility_check": {
+    "state": "not_evaluated",
+    "attributes": {},
+    "explanation": "Accessibility was not evaluated. A returned pedestrian route is not an accessibility approval."
+  },
+  "provenance": {
+    "contract_version": "official-source-contracts.v1",
+    "mode": "live",
+    "source_name": "CSDI 3D Pedestrian Network",
+    "source_record_id": "route-42",
+    "fetched_at": "2026-10-09T04:00:00Z",
+    "issued_at": null,
+    "valid_until": null,
+    "source_version": "network-9",
+    "freshness_state": "unknown",
+    "source_provided_freshness": null,
+    "mode_metadata": {
+      "mode": "live",
+      "fetched_at": "2026-10-09T04:00:00Z",
+      "provider_request_id": "req-1",
+      "provider_response_id": "res-1"
+    }
+  },
+  "validation": {
+    "valid": true,
+    "findings": [],
+    "provider_request_id": "req-1",
+    "provider_response_id": "res-1",
+    "correlation_id": "corr-1"
+  },
+  "safe_failure": null,
+  "explanation": "Submitted CSDI route result."
+}
