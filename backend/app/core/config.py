@@ -20,17 +20,24 @@ class Settings:
 
     @classmethod
     def from_env(cls) -> Settings:
+        def default(name: str) -> object:
+            # Slotted dataclass fields are member descriptors on the class.
+            return cls.__dataclass_fields__[name].default
+
         return cls(
-            app_name=os.getenv("APP_NAME", cls.app_name),
-            app_env=os.getenv("APP_ENV", cls.app_env),
-            database_url=os.getenv("DATABASE_URL", cls.database_url),
+            app_name=os.getenv("APP_NAME", str(default("app_name"))),
+            app_env=os.getenv("APP_ENV", str(default("app_env"))),
+            database_url=os.getenv("DATABASE_URL", str(default("database_url"))),
             database_connect_timeout_seconds=int(
-                os.getenv("DATABASE_CONNECT_TIMEOUT_SECONDS", str(cls.database_connect_timeout_seconds))
+                os.getenv(
+                    "DATABASE_CONNECT_TIMEOUT_SECONDS",
+                    str(default("database_connect_timeout_seconds")),
+                )
             ),
-            allowed_origins=_csv(os.getenv("ALLOWED_ORIGINS", ",".join(cls.allowed_origins))),
-            trusted_hosts=_csv(os.getenv("TRUSTED_HOSTS", ",".join(cls.trusted_hosts))),
+            allowed_origins=_csv(os.getenv("ALLOWED_ORIGINS", ",".join(default("allowed_origins")))),
+            trusted_hosts=_csv(os.getenv("TRUSTED_HOSTS", ",".join(default("trusted_hosts")))),
             max_request_body_bytes=int(
-                os.getenv("MAX_REQUEST_BODY_BYTES", str(cls.max_request_body_bytes))
+                os.getenv("MAX_REQUEST_BODY_BYTES", str(default("max_request_body_bytes")))
             ),
         )
 

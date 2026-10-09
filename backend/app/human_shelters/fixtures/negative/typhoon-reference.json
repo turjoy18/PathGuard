@@ -1,0 +1,52 @@
+{
+  "schema_version": "human-shelter-catalogue.v1",
+  "fixture_name": "central-hong-kong-human-shelters",
+  "fixture_version": "negative-typhoon",
+  "label": "PathGuard verified prototype/demo catalogue",
+  "pilot_area": "Central Hong Kong",
+  "owner": "PathGuard",
+  "source_url": "backend/app/human_shelters/fixtures/negative/typhoon-reference.json",
+  "attribution": "Negative fixture. Not official shelter data.",
+  "coverage": "Documented Central Hong Kong pilot area only. This is not official citywide Hong Kong coverage.",
+  "limitations": "Negative import fixture for a typhoon shelter reference.",
+  "verification_method": "Not a verified human shelter.",
+  "data_classification": "mock_demo",
+  "official_citywide": false,
+  "data_mode": "snapshot",
+  "publication_date": "2026-10-09",
+  "records": [
+    {
+      "stable_id": "md-typhoon-causeway-bay",
+      "record_type": "typhoon_shelter_reference",
+      "name": "Causeway Bay Typhoon Shelter",
+      "address": "Causeway Bay, Hong Kong",
+      "authority": "Marine Department",
+      "pilot_area": "Central Hong Kong",
+      "geometry": {
+        "geometry_type": "Point",
+        "coordinates": [114.157, 22.281],
+        "crs": "EPSG:4326",
+        "dimensions": 2
+      },
+      "operating_status": "open",
+      "last_verified_at": "2026-10-01T00:00:00Z",
+      "provenance": {
+        "contract_version": "official-source-contracts.v1",
+        "mode": "snapshot",
+        "source_name": "Marine Department",
+        "source_record_id": "md-typhoon-causeway-bay",
+        "fetched_at": "2026-10-01T00:00:00Z",
+        "issued_at": "2026-10-01T00:00:00Z",
+        "valid_until": null,
+        "source_version": "negative",
+        "freshness_state": "unknown",
+        "source_provided_freshness": null,
+        "mode_metadata": {
+          "mode": "snapshot",
+          "snapshot_version": "negative",
+          "snapshot_at": "2026-10-09T00:00:00Z"
+        }
+      }
+    }
+  ]
+}
