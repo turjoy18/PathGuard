@@ -9,3 +9,5 @@ alembic upgrade head
 ```
 
 The configured URL is read from `DATABASE_URL` by `migrations/env.py`; do not commit credentials or use development credentials in deployed environments.
+
+`0002_official_source_contracts` adds the official-source registry, health, publication, and receipt tables. It seeds CSDI, HKO, and Marine Department without overwriting later operator changes, and its downgrade removes only those tables.

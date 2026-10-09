@@ -29,6 +29,8 @@ This directory contains the shared FastAPI/PostGIS application skeleton. Feature
 
 The health endpoint is `GET http://localhost:8000/api/v1/health`. It returns HTTP 200 only when the application can connect to PostgreSQL and the PostGIS extension responds. Provider availability is intentionally not part of this database readiness check.
 
+Official-source registry, health, and normalized publications are a separate contract under `/api/v1/source-contracts` once `register_source_contracts` is passed to `create_app`. See `app/source_contracts/README.md`. Revision `0002_official_source_contracts` adds that persistence boundary after the empty baseline.
+
 ## Feature registration
 
 Register a feature router through the application factory rather than editing feature code into `app.main`:
