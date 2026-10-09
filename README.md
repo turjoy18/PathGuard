@@ -35,6 +35,12 @@ npm run dev
 
 `npm run build` writes a static site to `frontend/dist`. The API stays a separate process with `DATABASE_URL` pointed at PostGIS.
 
+## Hosted
+
+Vercel builds `frontend/` and serves the static site. `frontend/vercel.json` sends client routes back to `index.html`.
+
+The hosted database is the Supabase project `pathguard` in `ap-southeast-1`, ref `bqionenrwbrookjsfenn`, with PostGIS enabled and the Alembic schema through `0003_human_shelter_catalogue`. The browser does not query that database. Point the API process at it with `DATABASE_URL` when that process has a host. The pages still use the in-app fixture catalogue.
+
 ## Checks
 
 GitHub Actions runs the frontend tests and production build, then the backend tests against PostGIS. The same commands are `npm test`, `npm run build`, `alembic upgrade head`, and `python -m pytest` from the directories above.
