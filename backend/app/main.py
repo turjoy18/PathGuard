@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from app.api.health import router as health_router
+from app.adapters.csdi import router as csdi_router
 from app.core.config import Settings
 from app.db.health import DatabaseProbe, PostgresDatabaseProbe
 from app.errors import internal_error_response, validation_error_response
@@ -69,6 +70,7 @@ def create_app(
 
     api_router = APIRouter(prefix="/api/v1")
     api_router.include_router(health_router)
+    api_router.include_router(csdi_router())
     application.include_router(api_router)
 
     registry = FeatureRegistry()
