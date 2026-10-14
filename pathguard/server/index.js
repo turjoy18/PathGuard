@@ -14,7 +14,7 @@ import { createHelpCase, cancelCase, createCheckin, respondCheckin, dependantsFo
 import { handle as agentHandle, confirmAction, TOOLS } from './lib/agent.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const WEB = path.join(here, '../web');
+const WEB = path.resolve(process.env.PG_WEB || path.join(here, '../web'));
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
 
 const fail = (status, message) => Object.assign(new Error(message), { status });
@@ -272,7 +272,10 @@ export const server = http.createServer(async (req, res) => {
   }
 });
 
-export function start(port = Number(process.env.PORT || 3000)) {
+let booted = false;
+export function boot() {
+  if (booted) return;
+  booted = true;
   seedDemoUsers();
   const alex = db.users.find((u) => u.username === 'alex');
   if (alex && !db.profiles[alex.id]) db.profiles[alex.id] = encrypt(normaliseProfile({ mobility: { wheelchair: 'manual' }, needs: { toilet: true } }));
@@ -280,6 +283,10 @@ export function start(port = Number(process.env.PORT || 3000)) {
   setInterval(tickWeather, 60_000).unref();
   setInterval(() => { try { tickEscalation(); } catch (e) { console.error(e); } }, 5_000).unref();
   setInterval(() => { for (const c of clients) c.res.write(': ping\n\n'); }, 25_000).unref();
+}
+
+export function start(port = Number(process.env.PORT || 3000)) {
+  boot();
   return new Promise((resolve) => server.listen(port, () => { console.log(`PathGuard running at http://localhost:${server.address().port}`); resolve(server); }));
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) start();
