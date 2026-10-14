@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.env.PG_WEB = path.join(root, 'web');
 if (!process.env.PG_DB) process.env.PG_DB = '/tmp/pathguard-db.json';
+// One signing key for every instance. A random key makes the next request look logged out.
+if (!process.env.PG_SECRET) process.env.PG_SECRET = 'pathguard-demo-signing-key';
 
 const { server, boot } = await import('../server/index.js');
 boot();

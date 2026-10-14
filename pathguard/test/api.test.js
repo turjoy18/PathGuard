@@ -189,3 +189,22 @@ test('static app and security headers', async () => {
   assert.equal(r.status, 200); assert.match(r.headers.get('content-security-policy'), /default-src 'self'/);
   assert.match(await r.text(), /PathGuard/);
 });
+
+test('demo and guest sessions still resolve after the in-memory database is reseeded', async () => {
+  const alex = await call('POST', '/api/auth/login', { username: 'alex', password: 'demo' });
+  const guest = await call('POST', '/api/auth/guest', { name: 'Guest' });
+  assert.equal(alex.status, 200);
+  assert.equal(guest.status, 200);
+  const { resetAll } = await import('../server/lib/store.js');
+  const { seedDemoUsers } = await import('../server/lib/auth.js');
+  resetAll();
+  seedDemoUsers();
+  const me = await call('GET', '/api/me', null, alex.body.token);
+  const guestMe = await call('GET', '/api/me', null, guest.body.token);
+  assert.equal(me.status, 200);
+  assert.equal(me.body.user.id, alex.body.user.id);
+  assert.equal(me.body.user.name, 'Alex Chan');
+  assert.equal(guestMe.status, 200);
+  assert.equal(guestMe.body.user.name, 'Guest');
+  assert.equal(guestMe.body.user.guest, true);
+});

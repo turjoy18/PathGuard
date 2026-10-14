@@ -13,7 +13,7 @@ export function checkPw(pw, stored) {
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 export function sign(user) {
-  const body = Buffer.from(JSON.stringify({ id: user.id, role: user.role, exp: now() + TTL })).toString('base64url');
+  const body = Buffer.from(JSON.stringify({ id: user.id, role: user.role, name: user.name, username: user.username || null, exp: now() + TTL })).toString('base64url');
   return `${body}.${crypto.createHmac('sha256', SECRET).update(body).digest('base64url')}`;
 }
 export function verify(token) {
@@ -25,23 +25,27 @@ export function verify(token) {
   try {
     const p = JSON.parse(Buffer.from(body, 'base64url').toString());
     if (p.exp < now()) return null;
-    const u = db.users.find((x) => x.id === p.id);
+    let u = db.users.find((x) => x.id === p.id);
+    if (!u && p.role === 'user' && !p.username && p.id) {
+      u = { id: p.id, name: String(p.name || 'Guest').slice(0, 40), role: 'user', username: null, pw: null, lang: 'en', createdAt: now(), trust: 0.5, banned: false, guest: true };
+      db.users.push(u);
+    }
     return u && !u.deleted ? u : null;
   } catch { return null; }
 }
 export const hasRole = (u, min) => !!u && rank[u.role] >= rank[min];
 
-export function createUser({ name, role = 'user', username, password, lang = 'en' }) {
-  const u = { id: uid('u'), name, role, username: username || null, pw: password ? hashPw(password) : null, lang, createdAt: now(), trust: 0.5, banned: false };
+export function createUser({ id, name, role = 'user', username, password, lang = 'en' }) {
+  const u = { id: id || uid('u'), name, role, username: username || null, pw: password ? hashPw(password) : null, lang, createdAt: now(), trust: 0.5, banned: false };
   db.users.push(u); save(); return u;
 }
 export function seedDemoUsers() {
   if (db.users.some((u) => u.username === 'alex')) return;
-  const alex = createUser({ name: 'Alex Chan', role: 'user', username: 'alex', password: 'demo' });
-  const grace = createUser({ name: 'Grace Chan', role: 'caregiver', username: 'grace', password: 'demo' });
-  createUser({ name: 'Kai Wong (shelter staff)', role: 'staff', username: 'kai', password: 'demo' });
-  createUser({ name: 'Operator Lee', role: 'operator', username: 'ops', password: 'demo' });
-  const mei = createUser({ name: 'Mei Lam', role: 'user', username: 'mei', password: 'demo' });
+  const alex = createUser({ id: 'u_alex', name: 'Alex Chan', role: 'user', username: 'alex', password: 'demo' });
+  const grace = createUser({ id: 'u_grace', name: 'Grace Chan', role: 'caregiver', username: 'grace', password: 'demo' });
+  createUser({ id: 'u_kai', name: 'Kai Wong (shelter staff)', role: 'staff', username: 'kai', password: 'demo' });
+  createUser({ id: 'u_ops', name: 'Operator Lee', role: 'operator', username: 'ops', password: 'demo' });
+  const mei = createUser({ id: 'u_mei', name: 'Mei Lam', role: 'user', username: 'mei', password: 'demo' });
   db.links.push({ id: uid('lk'), userId: alex.id, caregiverId: grace.id, status: 'active', createdAt: now() });
   db.consents.push({ id: uid('cs'), userId: alex.id, subject: `caregiver:${grace.id}`, fields: { status: true, location: true, profile: false, alerts: true }, at: now(), version: 1 });
   void mei; save();
